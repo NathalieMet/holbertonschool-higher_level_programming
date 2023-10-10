@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-This function adds two integers
+This function divides all elements of a matrix.
 
 
 """
 
 
 def matrix_divided(matrix, div):
-    """add_integer function
+    """matrix_divided function
 
     """
     if not isinstance(matrix, list) or \
