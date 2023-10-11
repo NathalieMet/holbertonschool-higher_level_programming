@@ -8,6 +8,9 @@ here?
 school:
 <BLANKLINE>
 
+>>> text_indentation("")
+
+
 >>> text_indentation("hello")
 hello
 
