@@ -7,12 +7,13 @@ This function prints a text with 2 new lines after each of these characters:
 
 
 def text_indentation(text):
-    """text_indentation function
-
-    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    for element in text:
-        print(element, end="")
-        if element in [".", "?", ":"]:
-            print("\n")
+    text = text.replace('.', '.\n\n').replace('?', '?\n\n') \
+                                     .replace(':', ':\n\n')
+    paragraphs = text.split('\n')
+    for i, paragraph in enumerate(paragraphs):
+        if i == len(paragraphs) - 1:
+            print(paragraph.strip(), end='')
+        else:
+            print(paragraph.strip())
