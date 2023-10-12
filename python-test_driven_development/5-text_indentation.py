@@ -7,6 +7,9 @@ This function prints a text with 2 new lines after each of these characters:
 
 
 def text_indentation(text):
+    """matrix_divided function
+
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     text = text.replace('.', '.\n\n').replace('?', '?\n\n') \
