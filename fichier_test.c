@@ -1,39 +1,28 @@
 #include <stdio.h>
 
-void print_array(int array[], int size)
+int main (void)
 {
+    int array[] = {30, 20, 50, 1, 2};
     int i;
-    for (i = 0; i < size; i++)
+    int len = sizeof(array) / sizeof(int);
+    int bigger = 0;
+    int sec_bigger = 0;
+
+    for (i = 0; i < len; i++)
     {
-        printf("%d", array[i]);
+        if (array[bigger] < array[i])
+            {
+                bigger = i;
+            }
     }
-    printf("\n");
-}
-
-void reverse_array(int array[], int size)
-{
-    int deb = 0;
-    int end = size -1;
-    int temp;
-
-    while (deb < end)
+    for (i = 0; i < len; i++)
     {
-        temp = array[deb];
-        array[deb] = array[end];
-        array[end] = temp;
-        deb ++;
-        end --;
+        if (i != bigger && array[sec_bigger] < array[i])
+            {
+                sec_bigger = i;
+            }
     }
-}
-
-int main ()
-{
-    int array[] = {1, 2, 3, 4};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    print_array(array, size);
-    reverse_array(array, size);
-    print_array(array, size);
+    printf ("%d", array[sec_bigger]);
     return 0;
 }
 
