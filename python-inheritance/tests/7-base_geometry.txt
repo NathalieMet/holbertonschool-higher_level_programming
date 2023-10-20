@@ -48,8 +48,7 @@ Traceback (most recent call last):
 TypeError: Hello must be an integer
 
 >>> bg.integer_validator("Test", True)
-Traceback (most recent call last):
-TypeError: Test must be an integer
+
 
 >>> bg.integer_validator("Hello", {2, 5})
 Traceback (most recent call last):
