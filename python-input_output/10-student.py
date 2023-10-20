@@ -17,4 +17,4 @@ class Student:
         for attr in attrs:
             if hasattr(self, attr):
                 json_dict[attr] = getattr(self, attr)
-                return json_dict
+        return json_dict
