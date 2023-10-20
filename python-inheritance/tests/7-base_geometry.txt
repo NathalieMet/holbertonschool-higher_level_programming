@@ -47,9 +47,9 @@ TypeError: Hello must be an integer
 Traceback (most recent call last):
 TypeError: Hello must be an integer
 
->>> bg.integer_validator("Hello", True)
+>>> bg.integer_validator("Test", True)
 Traceback (most recent call last):
-TypeError: Hello must be an integer
+TypeError: Test must be an integer
 
 >>> bg.integer_validator("Hello", {2, 5})
 
