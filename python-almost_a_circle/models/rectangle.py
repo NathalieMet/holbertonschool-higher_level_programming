@@ -96,3 +96,8 @@ class Rectangle(Base):
             if i != self.__height - 1:
                 rectangle_str += "\n"
         print(rectangle_str)
+
+    def __str__(self):
+        """def str"""
+        return ("[Rectangle] ({}) {}/{} - {}/{}"
+                .format(self.id, self.x, self.y, self.width, self.height))
