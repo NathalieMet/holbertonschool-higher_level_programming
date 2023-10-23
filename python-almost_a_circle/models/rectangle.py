@@ -85,3 +85,14 @@ class Rectangle(Base):
     def area(self):
         """def area"""
         return self.__width * self.__height
+
+    def display(self):
+        """def display"""
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        rectangle_str = ""
+        for i in range(self.__height):
+            rectangle_str += "#" * self.__width
+            if i != self.__height - 1:
+                rectangle_str += "\n"
+        print(rectangle_str)
