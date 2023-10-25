@@ -38,5 +38,89 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             r7 = Rectangle([], {})
 
+    def test_setter_width_rectangle(self):
+        """Tests the width setter method."""
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.width = "hello"
+
+        r2 = Rectangle(10, 10)
+        r2.width = 20
+        self.assertEqual(r2.width, 20)
+
+        with self.assertRaises(ValueError):
+            r3 = Rectangle(10, 10)
+            r3.width = -10
+
+        with self.assertRaises(TypeError):
+            r4 = Rectangle(10, 10)
+            r4.width = []
+
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(10, 10)
+            r5.width = 0
+
+    def test_setter_height_rectangle(self):
+        """Tests the width setter method."""
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.height = "hello"
+
+        r2 = Rectangle(10, 10)
+        r2.height = 20
+        self.assertEqual(r2.height, 20)
+
+        with self.assertRaises(ValueError):
+            r3 = Rectangle(10, 10)
+            r3.height = -10
+
+        with self.assertRaises(TypeError):
+            r4 = Rectangle(10, 10)
+            r4.height = []
+
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(10, 10)
+            r5.height = 0
+
+    def test_setter_x_rectangle(self):
+        """Tests the x setter method."""
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.x = "hello"
+
+        r2 = Rectangle(10, 10)
+        r2.x = 20
+        self.assertEqual(r2.x, 20)
+
+        with self.assertRaises(ValueError):
+            r3 = Rectangle(10, 10)
+            r3.x = -10
+
+        with self.assertRaises(TypeError):
+            r4 = Rectangle(10, 10)
+            r4.x = []
+
+    def test_setter_y_rectangle(self):
+        """Tests the y setter method."""
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.y = "hello"
+
+        r2 = Rectangle(10, 10)
+        r2.y = 20
+        self.assertEqual(r2.y, 20)
+
+        with self.assertRaises(ValueError):
+            r3 = Rectangle(10, 10)
+            r3.y = -10
+
+        with self.assertRaises(TypeError):
+            r4 = Rectangle(10, 10)
+            r4.y = []
+
 if __name__ == '__main__':
     unittest.main()
