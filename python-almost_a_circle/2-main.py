@@ -4,6 +4,9 @@ from models.rectangle import Rectangle
 
 if __name__ == "__main__":
 
+    r1 = Rectangle([], {})
+    print(r1.width)
+
     try:
         Rectangle(10, "2")
     except Exception as e:

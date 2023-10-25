@@ -12,11 +12,15 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b1.id, 1)
         self.assertEqual(b2.id, 2)
 
+        b3 = Base(-10)
+        self.assertEqual(b3.id, -10)
+
         b4 = Base(100)
         self.assertEqual(b4.id, 100)
 
         b5 = Base("hello")
         self.assertEqual(b5.id, "hello")
+
 
         with self.assertRaises(TypeError):
             b6 = Base(1, 2, 3)
