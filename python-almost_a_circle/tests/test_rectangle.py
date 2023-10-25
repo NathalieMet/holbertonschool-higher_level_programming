@@ -4,6 +4,8 @@
 import unittest
 import os
 from models.rectangle import Rectangle
+from io import StringIO
+import sys
 
 class TestBase(unittest.TestCase):
 
@@ -18,10 +20,25 @@ class TestBase(unittest.TestCase):
 
     def test_init_rectangle(self):
         """Tests the __init__ method."""
-        r1 = Rectangle(10, 10, 1, 1, 1)
-        r2 = Rectangle(10, 10, 2, 2, 2)
+        r1 = Rectangle(10, 10, 1, 3, 1)
+        r2 = Rectangle(20, 20, 2, 4, 2)
         self.assertEqual(r1.id, 1)
         self.assertEqual(r2.id, 2)
+        self.assertEqual(r1.width, 10)
+        self.assertEqual(r2.width, 20)
+        self.assertEqual(r1.height, 10)
+        self.assertEqual(r2.height, 20)
+        self.assertEqual(r1.x, 1)
+        self.assertEqual(r2.x, 2)
+        self.assertEqual(r1.y, 3)
+        self.assertEqual(r2.y, 4)
+
+        r1 = Rectangle(10, 10)
+        self.assertEqual(r1.width, 10)
+        self.assertEqual(r1.x, 0)
+        self.assertEqual(r1.height, 10)
+        self.assertEqual(r1.y, 0)
+
 
         with self.assertRaises(TypeError):
             r3 = Rectangle("10", "2")
@@ -121,6 +138,32 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             r4 = Rectangle(10, 10)
             r4.y = []
+
+    def test_area_rectangle(self):
+        """Tests the area method."""
+
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+
+        r2 = Rectangle(2, 10)
+        self.assertEqual(r2.area(), 20)
+
+    def test_display_rectangle(self):
+        """Tests the display method."""
+
+        r1 = Rectangle(2, 3, 2, 2)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        r1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), "\n\n  ##\n  ##\n  ##\n")
+
+        r2 = Rectangle(3, 2, 1, 0)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        r2.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), " ###\n ###\n")
 
 if __name__ == '__main__':
     unittest.main()
