@@ -86,5 +86,43 @@ class TestBase(unittest.TestCase):
             r4 = Square(10, 10)
             r4.y = []
 
+    def test_str_square(self):
+        """Tests the str method."""
+
+        s1 = Square(4, 2, 1, 12)
+        self.assertEqual(str(s1), "[Square] (12) 2/1 - 4")
+
+        s2 = Square(5, 5, 1)
+        self.assertEqual(str(s2), "[Square] (55) 5/1 - 5")
+
+        s3 = Square(5)
+        self.assertEqual(str(s3), "[Square] (56) 0/0 - 5")
+
+    def test_update_square(self):
+        """Tests the update method."""
+
+        s1 = Square(1, 1, 2, 2)
+        s1.update(45)
+        self.assertEqual(str(s1), "[Square] (45) 1/2 - 1")
+        s1.update(45, 50)
+        self.assertEqual(str(s1), "[Square] (45) 1/2 - 50")
+        s1.update(45, 50, 60)
+        self.assertEqual(str(s1), "[Square] (45) 60/2 - 50")
+        s1.update(45, 50, 60, 70)
+        self.assertEqual(str(s1), "[Square] (45) 60/70 - 50")
+        with self.assertRaises(IndexError):
+            s1.update(45, 50, 60, 70, 80)
+
+        s1.update(size=27)
+        self.assertEqual(str(s1), "[Square] (45) 60/70 - 27")
+        s1.update(y=1, size=2, x=3, id=89)
+        self.assertEqual(str(s1), "[Square] (89) 3/1 - 2")
+
+    def test_to_dictionary_square(self):
+        """Tests the to_dictionary method."""
+
+        s1 = Square(1, 2, 2, 10)
+        self.assertEqual(s1.to_dictionary(), {'id': 10, 'size': 1, 'x': 2, 'y': 2})
+
 if __name__ == '__main__':
     unittest.main()
