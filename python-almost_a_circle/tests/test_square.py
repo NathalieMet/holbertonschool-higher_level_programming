@@ -26,6 +26,12 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             s6 = Square()
 
+        with self.assertRaises(ValueError):
+            s7 = Square(-10, -20, -30)
+
+        with self.assertRaises(TypeError):
+            s7 = Square(10.5, -20.1)
+
         with self.assertRaises(TypeError):
             s7 = Square([], {})
 
@@ -48,6 +54,10 @@ class TestBase(unittest.TestCase):
             s4 = Square(10, 10)
             s4.size = []
 
+        with self.assertRaises(TypeError):
+            s4 = Square(10, 10)
+            s4.size = 2568.2566
+
     def test_setter_x_rectangle(self):
         """Tests the x setter method."""
 
@@ -66,6 +76,10 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             r4 = Square(10, 10)
             r4.x = []
+
+        with self.assertRaises(TypeError):
+            s4 = Square(10, 10)
+            s4.x = 2568.2566
 
     def test_setter_y_rectangle(self):
         """Tests the y setter method."""
@@ -86,6 +100,10 @@ class TestBase(unittest.TestCase):
             r4 = Square(10, 10)
             r4.y = []
 
+        with self.assertRaises(TypeError):
+            s4 = Square(10, 10)
+            s4.y = 2568.2566
+
     def test_str_square(self):
         """Tests the str method."""
 
@@ -93,10 +111,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(s1), "[Square] (12) 2/1 - 4")
 
         s2 = Square(5, 5, 1)
-        self.assertEqual(str(s2), "[Square] (55) 5/1 - 5")
+        self.assertEqual(str(s2), "[Square] (69) 5/1 - 5")
 
         s3 = Square(5)
-        self.assertEqual(str(s3), "[Square] (56) 0/0 - 5")
+        self.assertEqual(str(s3), "[Square] (70) 0/0 - 5")
 
     def test_update_square(self):
         """Tests the update method."""

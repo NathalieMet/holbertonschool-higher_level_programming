@@ -69,14 +69,14 @@ class TestBase(unittest.TestCase):
     def setUp(self):
         """Cette méthode est appelée avant chaque test."""
         with open('Rectangle.json', 'w') as file:
-            file.write('[{"width": 2}]')  # Remplacez par vos attributs et valeurs
+            file.write('[{"width": 2}]')
 
     def test_load_from_file(self):
         """Teste la méthode load_from_file."""
         instances = Rectangle.load_from_file()
         self.assertEqual(len(instances), 1)
         self.assertIsInstance(instances[0], Rectangle)
-        self.assertEqual(instances[0].width, 2)  # Remplacez par vos attributs et valeurs
+        self.assertEqual(instances[0].width, 2)
 
     def tearDown(self):
         """Cette méthode est appelée après chaque test."""

@@ -53,6 +53,12 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             r7 = Rectangle([], {})
 
+        with self.assertRaises(ValueError):
+            s7 = Rectangle(-10, -20, -30)
+
+        with self.assertRaises(TypeError):
+            s7 = Rectangle(10.5, -20.1)
+
     def test_setter_width_rectangle(self):
         """Tests the width setter method."""
 
@@ -63,6 +69,10 @@ class TestBase(unittest.TestCase):
         r2 = Rectangle(10, 10)
         r2.width = 20
         self.assertEqual(r2.width, 20)
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.width = 10.2
 
         with self.assertRaises(ValueError):
             r3 = Rectangle(10, 10)
@@ -82,6 +92,10 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             r1 = Rectangle(10, 10)
             r1.height = "hello"
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.height = 10.2
 
         r2 = Rectangle(10, 10)
         r2.height = 20
@@ -106,6 +120,10 @@ class TestBase(unittest.TestCase):
             r1 = Rectangle(10, 10)
             r1.x = "hello"
 
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.x = 10.2
+
         r2 = Rectangle(10, 10)
         r2.x = 20
         self.assertEqual(r2.x, 20)
@@ -124,6 +142,10 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             r1 = Rectangle(10, 10)
             r1.y = "hello"
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 10)
+            r1.y = 10.2
 
         r2 = Rectangle(10, 10)
         r2.y = 20
@@ -145,6 +167,15 @@ class TestBase(unittest.TestCase):
 
         r2 = Rectangle(2, 10)
         self.assertEqual(r2.area(), 20)
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(" ", 10)
+
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(-10, 10)
+
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(2, [])
 
     def test_display_rectangle(self):
         """Tests the display method."""
@@ -170,7 +201,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
 
         r2 = Rectangle(5, 5, 1)
-        self.assertEqual(str(r2), "[Rectangle] (36) 1/0 - 5/5")
+        self.assertEqual(str(r2), "[Rectangle] (45) 1/0 - 5/5")
 
     def test_update_rectangle(self):
         """Tests the update method."""
@@ -188,6 +219,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(r1), "[Rectangle] (45) 70/80 - 50/60")
         with self.assertRaises(IndexError):
             r1.update(45, 50, 60, 70, 80, 90)
+        with self.assertRaises(ValueError):
+            r1.update("45", -50, 60.2, 70, 80)
 
         r1.update(height=27)
         self.assertEqual(str(r1), "[Rectangle] (45) 70/80 - 50/27")
