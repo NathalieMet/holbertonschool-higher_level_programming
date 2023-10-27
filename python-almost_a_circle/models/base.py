@@ -62,3 +62,7 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return[]
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Base."""
+        return {'id': self.id}

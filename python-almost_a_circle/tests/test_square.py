@@ -93,10 +93,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(s1), "[Square] (12) 2/1 - 4")
 
         s2 = Square(5, 5, 1)
-        self.assertEqual(str(s2), "[Square] (55) 5/1 - 5")
+        self.assertEqual(str(s2), "[Square] (56) 5/1 - 5")
 
         s3 = Square(5)
-        self.assertEqual(str(s3), "[Square] (56) 0/0 - 5")
+        self.assertEqual(str(s3), "[Square] (57) 0/0 - 5")
 
     def test_update_square(self):
         """Tests the update method."""

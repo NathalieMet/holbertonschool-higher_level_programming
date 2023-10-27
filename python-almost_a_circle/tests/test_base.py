@@ -2,7 +2,11 @@
 """Unittest for class base
 """
 import unittest
+import json
+import os
 from models.base import Base
+from models.square import Square
+from models.rectangle import Rectangle
 
 class TestBase(unittest.TestCase):
     def test_init(self):
@@ -24,6 +28,26 @@ class TestBase(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             b6 = Base(1, 2, 3)
+
+    def test_to_json_string(self):
+        self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertEqual(Base.to_json_string(None), "[]")
+        list_dictionaries = [{"key1": "value1"}, {"key2": "value2"}]
+        self.assertEqual(Base.to_json_string(list_dictionaries), json.dumps(list_dictionaries))
+
+    def test_save_to_file(self):
+        obj = Base()
+        obj.id = 1
+
+        Base.save_to_file([obj])
+
+        self.assertTrue(os.path.exists('Base.json'))
+
+        with open('Base.json', 'r') as f:
+            content = f.read()
+            self.assertEqual(content, Base.to_json_string([obj.to_dictionary() if isinstance(obj, Rectangle) else obj.__dict__]))
+
+        os.remove('Base.json')
 
 if __name__ == '__main__':
     unittest.main()
