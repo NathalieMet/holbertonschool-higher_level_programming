@@ -36,7 +36,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        if json_string is None:
+        if json_string is None or json_string == "":
             return []
         else:
             return json.loads(json_string)
@@ -62,6 +62,7 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return[]
+
 
     def to_dictionary(self):
         """Returns the dictionary representation of a Base."""

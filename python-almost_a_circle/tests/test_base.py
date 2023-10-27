@@ -49,5 +49,22 @@ class TestBase(unittest.TestCase):
 
         os.remove('Base.json')
 
+    def test_from_json_string(self):
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string(""), [])
+        json_string = '[{"key1": "value1"}, {"key2": "value2"}]'
+        self.assertEqual(Base.from_json_string(json_string), json.loads(json_string))
+
+    def test_create(self):
+        test_dict = {'id': 1, 'width': 2, 'height': 3, 'x': 4, 'y': 5}
+
+        obj = Rectangle.create(**test_dict)
+
+        self.assertEqual(obj.id, 1)
+        self.assertEqual(obj.width, 2)
+        self.assertEqual(obj.height, 3)
+        self.assertEqual(obj.x, 4)
+        self.assertEqual(obj.y, 5)
+
 if __name__ == '__main__':
     unittest.main()
