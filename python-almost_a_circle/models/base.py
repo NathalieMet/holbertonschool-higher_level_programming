@@ -63,7 +63,6 @@ class Base:
         except FileNotFoundError:
             return[]
 
-
     def to_dictionary(self):
         """Returns the dictionary representation of a Base."""
         return {'id': self.id}
