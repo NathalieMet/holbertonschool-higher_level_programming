@@ -4,5 +4,5 @@ SET @california_id = (SELECT id FROM states WHERE name = 'California');
 
 -- List all cities of California
 SELECT * FROM cities
-WHERE state_id = @California_id
+WHERE state_id = @california_id
 ORDER BY id ASC
