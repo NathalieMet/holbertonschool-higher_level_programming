@@ -28,4 +28,5 @@ def list_states():
     connexion.close()
 
 if __name__ == "__main__":
+    """The code will not be executed when imported"""
     list_states()
