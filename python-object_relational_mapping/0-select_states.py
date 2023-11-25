@@ -4,6 +4,7 @@
 import MySQLdb
 from sys import argv
 
+
 def list_states():
     """lists all states from the database hbtn_0e_0_usa"""
 
@@ -20,13 +21,15 @@ def list_states():
     # Exécuter une requête SQL
     curseur.execute("SELECT * FROM states ORDER BY id ASC")
     # Récupérer les résultats
-    query_rows= curseur.fetchall()
+    query_rows = curseur.fetchall()
     for row in query_rows:
         print(row)
     # Fermer le curseur et la connexion
     curseur.close()
     connexion.close()
 
+
 if __name__ == "__main__":
     """The code will not be executed when imported"""
+
     list_states()
