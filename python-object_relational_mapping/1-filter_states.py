@@ -16,16 +16,16 @@ def list_states():
         user=username,
         passwd=password,
         db=database)
-    # Créer un objet curseur pour exécuter des requêtes SQL
-    curseur = connexion.cursor()
+    # Créer un objet cur pour exécuter des requêtes SQL
+    cur = connexion.cursor()
     # Exécuter une requête SQL
-    curseur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
     # Récupérer les résultats
-    query_rows = curseur.fetchall()
+    query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
-    # Fermer le curseur et la connexion
-    curseur.close()
+    # Fermer le cur et la connexion
+    cur.close()
     connexion.close()
 
 
