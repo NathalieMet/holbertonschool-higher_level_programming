@@ -19,7 +19,9 @@ def list_states():
     # Créer un objet cur pour exécuter des requêtes SQL
     cur = connexion.cursor()
     # Exécuter une requête SQL
-    query = "SELECT * FROM cities ORDER BY cities.id ASC"
+    query = "SELECT cities.id, cities.name, states.name " \
+        "FROM states JOIN cities ON states.id = cities.state_id " \
+        "ORDER BY cities.id ASC"
     cur.execute(query)
     # Récupérer les résultats
     query_rows = cur.fetchall()
