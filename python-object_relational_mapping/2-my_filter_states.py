@@ -19,8 +19,7 @@ def list_states():
     # Créer un objet cur pour exécuter des requêtes SQL
     cur = connexion.cursor()
     # Exécuter une requête SQL
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC",
-                (search,))
+    cur.execute("SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(search))
     # Récupérer les résultats
     query_rows = cur.fetchall()
     for row in query_rows:
