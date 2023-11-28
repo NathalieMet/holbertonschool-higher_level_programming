@@ -3,9 +3,10 @@
  from the database hbtn_0e_6_usa"""
 
 from sys import argv
-from model_city import Base, City
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
+from model_state import Base, State
+from model_city import City
 
 if __name__ == "__main__":
     """The code will not be executed when imported"""
@@ -15,6 +16,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     session = Session(engine)
-    for state in session.query(City).order_by(City.id).all():
-        print("{}: {}".format(state.id, state.name))
+
+    cities = session.query(City).order_by(City.id).all()
+    for city in cities:
+        print("{}: ({}) {}".format(city.state.name, city.id, city.name))
+
     session.close()
