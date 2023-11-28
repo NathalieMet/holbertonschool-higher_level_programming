@@ -19,7 +19,9 @@ def list_states():
     # Créer un objet cur pour exécuter des requêtes SQL
     cur = connexion.cursor()
     # Exécuter une requête SQL
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute("SELECT * FROM states "
+                "WHERE name LIKE BINARY 'N%' "
+                "ORDER BY id ASC")
     # Récupérer les résultats
     query_rows = cur.fetchall()
     for row in query_rows:
